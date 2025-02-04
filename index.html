@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ TikTok ওয়ার্নিং সরানোর অনুরোধ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #000;
+            color: #00ff00;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #111;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #00ff00;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #00ff00;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            background: #222;
+            color: #00ff00;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #00cc00;
+        }
+
+        .loading-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading-text {
+            font-size: 1.5em;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 30px;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .loading-bar-inner {
+            width: 0;
+            height: 100%;
+            background: #00ff00;
+            animation: loading 3s linear forwards;
+        }
+
+        @keyframes loading {
+            to {
+                width: 100%;
+            }
+        }
+
+        .message {
+            color: #00ff00;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .success-container {
+            display: none;
+        }
+
+        .warning {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="formContainer">
+        <h2>⚠️ TikTok ওয়ার্নিং সরানোর অনুরোধ</h2>
+        <p>আপনার TikTok অ্যাকাউন্টের সতর্কতা সরানোর জন্য নিচের ফর্মটি পূরণ করুন:</p>
+        <form id="messageForm">
+            <label for="username">👤 আপনার TikTok ব্যবহারকারী নাম:</label>
+            <input type="text" id="username" name="username" required placeholder="আপনার TikTok ব্যবহারকারী নাম লিখুন...">
+
+            <button type="submit">🚀 সাবমিট করুন</button>
+        </form>
+    </div>
+
+    <div class="loading-container" id="loadingContainer">
+        <div class="loading-text">⚡ অনুগ্রহ করে অপেক্ষা করুন...</div>
+        <div class="loading-bar">
+            <div class="loading-bar-inner"></div>
+        </div>
+    </div>
+
+    <div class="container success-container" id="successContainer">
+        <h2>✅ আবেদন গ্রহণ করা হয়েছে!</h2>
+        <p id="userMessage" class="message"></p>
+        <p class="message">⚡ আপনার অনুরোধ প্রক্রিয়াকরণে রয়েছে...</p>
+        <p class="message">অনুগ্রহ করে ২৪ থেকে ৪৮ ঘন্টার মধ্যে আপনার অ্যাকাউন্ট চেক করুন।</p>
+        <p class="message">🔐 **নিরাপত্তা নিশ্চিতে দয়া করে অপেক্ষা করুন!**</p>
+        <p class="warning">💀 **যদি কোনো অবৈধ কার্যকলাপে জড়িত থাকেন, তাহলে আপনার একাউন্ট স্থায়ীভাবে নিষিদ্ধ হবে!**</p>
+        <p class="message">☠️ **আপনার অনুরোধ গোপন রাখা হবে!**</p>
+    </div>
+
+    <script>
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value.trim();
+
+            if (username) {
+                document.getElementById("formContainer").style.display = "none";
+                document.getElementById("loadingContainer").style.display = "block";
+
+                setTimeout(function() {
+                    document.getElementById("loadingContainer").style.display = "none";
+                    document.getElementById("successContainer").style.display = "block";
+                    document.getElementById("userMessage").innerHTML = "প্রিয় <strong>" + username + "</strong>, আপনার অনুরোধ গ্রহণ করা হয়েছে!";
+                }, 3000); // 3 সেকেন্ড অপেক্ষা করার পর মেসেজ দেখানো হবে
+            }
+        });
+    </script>
+</body>
+</html>
